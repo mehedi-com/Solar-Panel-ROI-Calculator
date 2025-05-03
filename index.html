@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate your potential savings and return on investment for solar panel installation. See how much you could save on energy bills with our free solar calculator.">
+    <meta name="keywords" content="solar panel calculator, solar ROI, solar savings, renewable energy calculator, solar panel cost, solar payback period">
+    <meta property="og:title" content="Solar Panel ROI Calculator | Estimate Your Savings">
+    <meta property="og:description" content="Calculate your potential savings and return on investment for solar panel installation.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#4CAF50">
+    <title>Solar Panel ROI Calculator | Estimate Your Savings</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2E7D32;
+            --accent-color: #8BC34A;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --border-radius: 8px;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .calculator-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .calculator-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .calculator-results {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .result-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .result-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .adsense {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            border-radius: var(--border-radius);
+        }
+        
+        .faq-section {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .faq-question {
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .blog-card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .calculator-container {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Solar Panel ROI Calculator</h1>
+            <p>Estimate your potential savings and return on investment for solar panel installation</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="calculator-container">
+            <div class="calculator-form">
+                <h2>Enter Your Details</h2>
+                <form id="solarCalculator">
+                    <div class="form-group">
+                        <label for="monthlyBill">Average Monthly Electricity Bill ($)</label>
+                        <input type="number" id="monthlyBill" min="0" step="1" value="150" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="roofSize">Available Roof Space (sq ft)</label>
+                        <input type="number" id="roofSize" min="0" step="1" value="500" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sunlightHours">Average Daily Sunlight Hours</label>
+                        <select id="sunlightHours" required>
+                            <option value="2">Low (2 hours)</option>
+                            <option value="3">Below Average (3 hours)</option>
+                            <option value="4" selected>Average (4 hours)</option>
+                            <option value="5">Above Average (5 hours)</option>
+                            <option value="6">High (6 hours)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="systemCost">Estimated System Cost ($)</label>
+                        <input type="number" id="systemCost" min="0" step="100" value="15000" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="incentives">Available Incentives ($)</label>
+                        <input type="number" id="incentives" min="0" step="100" value="3000">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="electricityIncrease">Annual Electricity Rate Increase (%)</label>
+                        <input type="number" id="electricityIncrease" min="0" max="20" step="0.1" value="3.5">
+                    </div>
+                    
+                    <button type="submit">Calculate ROI</button>
+                </form>
+            </div>
+            
+            <div class="calculator-results">
+                <h2>Your Solar Savings</h2>
+                <div id="results">
+                    <div class="result-item">
+                        <div class="result-label">System Size</div>
+                        <div class="result-value" id="systemSize">-</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-label">Annual Savings</div>
+                        <div class="result-value" id="annualSavings">-</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-label">Payback Period</div>
+                        <div class="result-value" id="paybackPeriod">-</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-label">20-Year Savings</div>
+                        <div class="result-value" id="longTermSavings">-</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-label">ROI After 20 Years</div>
+                        <div class="result-value" id="roi">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="adsense">
+            <!-- Google AdSense Placeholder -->
+            <p>Advertisement</p>
+            <div style="background: #eee; padding: 1rem; margin: 0 auto; max-width: 728px; height: 90px; display: flex; align-items: center; justify-content: center;">
+                AdSense Banner (728x90)
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How accurate is this solar calculator?</div>
+                <p>This calculator provides estimates based on average solar panel performance and typical electricity rates. For a precise assessment, consult with a local solar installer who can evaluate your specific roof conditions, shading, and local incentives.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What factors affect solar panel ROI?</div>
+                <p>Key factors include: your local electricity rates, available sunlight, roof orientation and angle, system cost, available incentives and tax credits, and future electricity rate increases. The calculator accounts for many of these variables.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How long do solar panels typically last?</div>
+                <p>Most solar panels come with 25-year warranties and can continue producing electricity beyond that timeframe, though at slightly reduced efficiency. Inverter components may need replacement after 10-15 years.</p>
+            </div>
+        </div>
+        
+        <h2>Learn More About Solar Energy</h2>
+        <div class="blog-links">
+            <div class="blog-card">
+                <h3>How to Choose the Right Solar Panels for Your Home</h3>
+                <p>Learn about different solar panel technologies and how to select the best system for your needs and budget.</p>
+                <p><a href="#">Read more →</a></p>
+            </div>
+            
+            <div class="blog-card">
+                <h3>Understanding Solar Incentives and Tax Credits</h3>
+                <p>A comprehensive guide to federal, state, and local solar incentives that can reduce your system cost.</p>
+                <p><a href="#">Read more →</a></p>
+            </div>
+            
+            <div class="blog-card">
+                <h3>Battery Storage: Is It Worth Adding to Your Solar System?</h3>
+                <p>Explore the benefits and costs of adding battery storage to your solar panel installation.</p>
+                <p><a href="#">Read more →</a></p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Solar Panel ROI Calculator. This tool provides estimates only. Consult with a professional for detailed analysis.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial calculation on page load
+            calculateROI();
+            
+            // Recalculate when form changes
+            document.getElementById('solarCalculator').addEventListener('input', calculateROI);
+            document.getElementById('solarCalculator').addEventListener('submit', function(e) {
+                e.preventDefault();
+                calculateROI();
+            });
+            
+            function calculateROI() {
+                // Get input values
+                const monthlyBill = parseFloat(document.getElementById('monthlyBill').value) || 0;
+                const roofSize = parseFloat(document.getElementById('roofSize').value) || 0;
+                const sunlightHours = parseFloat(document.getElementById('sunlightHours').value) || 0;
+                const systemCost = parseFloat(document.getElementById('systemCost').value) || 0;
+                const incentives = parseFloat(document.getElementById('incentives').value) || 0;
+                const electricityIncrease = parseFloat(document.getElementById('electricityIncrease').value) / 100 || 0;
+                
+                // Constants
+                const panelEfficiency = 0.18; // 18% efficient panels
+                const panelSize = 17.5; // sq ft per panel
+                const wattsPerPanel = 350; // watts per panel
+                const costPerWatt = 2.75; // average cost per watt installed
+                const annualDegradation = 0.005; // 0.5% per year
+                
+                // Calculations
+                const annualBill = monthlyBill * 12;
+                const maxPanels = Math.floor(roofSize / panelSize);
+                const systemSizeKW = (maxPanels * wattsPerPanel) / 1000;
+                const estimatedProduction = systemSizeKW * sunlightHours * 365 * 0.8; // 0.8 accounts for system losses
+                
+                // Adjust for real-world constraints (don't produce more than needed)
+                const annualUsageKWh = annualBill / 0.15; // assuming $0.15/kWh average
+                const actualProduction = Math.min(estimatedProduction, annualUsageKWh * 1.2); // cap at 120% of usage
+                
+                // Financial calculations
+                const netSystemCost = systemCost - incentives;
+                const firstYearSavings = actualProduction * 0.15; // $0.15/kWh
+                
+                // Calculate 20-year savings with rate increases
+                let cumulativeSavings = 0;
+                let year = 0;
+                let paybackPeriod = null;
+                let annualProduction = actualProduction;
+                
+                for (let i = 1; i <= 20; i++) {
+                    const yearSavings = annualProduction * 0.15 * Math.pow(1 + electricityIncrease, i-1);
+                    cumulativeSavings += yearSavings;
+                    
+                    // Check for payback period
+                    if (!paybackPeriod && cumulativeSavings >= netSystemCost) {
+                        paybackPeriod = i;
+                    }
+                    
+                    // Apply annual degradation
+                    annualProduction *= (1 - annualDegradation);
+                }
+                
+                // ROI calculation
+                const roi = ((cumulativeSavings - netSystemCost) / netSystemCost * 100).toFixed(1);
+                
+                // Update the UI
+                document.getElementById('systemSize').textContent = `${systemSizeKW.toFixed(2)} kW`;
+                document.getElementById('annualSavings').textContent = `$${firstYearSavings.toFixed(0)}`;
+                document.getElementById('paybackPeriod').textContent = paybackPeriod ? `${paybackPeriod} years` : ">20 years";
+                document.getElementById('longTermSavings').textContent = `$${cumulativeSavings.toFixed(0)}`;
+                document.getElementById('roi').textContent = `${roi}%`;
+            }
+        });
+    </script>
+</body>
+</html>
